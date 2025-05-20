@@ -12,5 +12,5 @@ fun contentReservation(roomNumber: Int, guestName: String, checkinDate: String) 
 
 fun reservationForRoom(roomNumber: Int): String {
     return reservations[roomNumber]?.let { "Guest: ${it.first}, Check-in: ${it.second}" }
-        ?: "not found the reservation"
+        ?: "the room is takent"
 }
