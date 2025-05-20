@@ -1,0 +1,20 @@
+Input                                                     
+Room number                                           
+Guest details that includes name and check-in-dates
+
+
+
+ Process
+
+ Create a function that is desired room number and guest details
+ Create an empty hashmap
+ Declaring a variable that holds a list of reserved room 
+ Iterate through the list of reserved rooms
+ If the desired room number is not in the reserved room then add the room number as key and the guest details as a value
+ Return the hashmap
+ 
+
+ Output
+
+ Hashmap
+
