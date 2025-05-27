@@ -1,5 +1,5 @@
 # group_24
-# group_24
+
 -Question 1
 You are building a hotel booking system.Using your knowledge in data structure,design a system that allows you to store room reservations where each room number maps to the guests name &  check in dates.
 -Question 2
