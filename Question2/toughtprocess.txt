@@ -1,0 +1,18 @@
+Input
+
+Doctor names and specialties
+Patient details (name, medical need, preferred time, specialty)
+Appointment duration
+Emergency cases (normal case,emergency case)        
+
+Process
+Store doctor schedules
+Match patients to appropriate doctors based on availability, specialty, and preferences
+Schedule appointments without conflicts
+Insert emergency appointments by preempting or shifting lower-priority ones
+Sort schedules by time and priority
+
+output
+
+List of scheduled appointments per doctor (ordered by time)
+Priority queue of emergency cases
