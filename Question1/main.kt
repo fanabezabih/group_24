@@ -3,7 +3,6 @@ fun main() {
     println(reservationForRoom(23))
 }
 
-
 val reservations = mutableMapOf<Int, Pair<String, String>>()
 
 fun contentReservation(roomNumber: Int, guestName: String, checkinDate: String) {
