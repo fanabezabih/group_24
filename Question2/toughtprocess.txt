@@ -1,18 +1,22 @@
 Input
 
-Doctor names and specialties
-Patient details (name, medical need, preferred time, specialty)
+Doctor names and date
+Patient details (name, medical need, preferred time,date)
 Appointment duration
-Emergency cases (normal case,emergency case)        
+Emergency cases (normal case,emergency case)    
 
 Process
-Store doctor schedules
-Match patients to appropriate doctors based on availability, specialty, and preferences
-Schedule appointments without conflicts
-Insert emergency appointments by preempting or shifting lower-priority ones
-Sort schedules by time and priority
+Create a function that has doctor's and patient's details
+Create a method that checks for the cases 
+Declare a variable that stores available doctors
+If it an emergency case,check whether the doctor is available at that sepcific date and time
+Add the doctor to the available doctors
+return the first doctor in the available doctors list
+else print no doctor is available for emergency
+In the normal case,check whether the doctor is available at that spefic date and time with the patient's preferable date and time
+If the doctor is available, then add the doctor to the available doctors list
+Return the specific doctor
 
 output
+A string of whether the doctor or a message 
 
-List of scheduled appointments per doctor (ordered by time)
-Priority queue of emergency cases
