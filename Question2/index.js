@@ -1,98 +1,39 @@
-class Room {
-    constructor(roomNumber) {
-        this.roomNumber = roomNumber;
-        this.name = null;
-        this.checkInDate = null;
+    function checkAvailability(doctorAvailability, requestedDate) {
+    
+        return doctorAvailability.includes(requestedDate); 
     }
+        
+    function findMatchingDoctors(doctors, requestedDate, isEmergency) {
+        const availableDoctors = [];
 
-    reserve(name, checkInDate) {
-        if (this.name === null) { 
-            this.name = name;
-            this.checkInDate = checkInDate;
-            return true;
-        }
-        return false;
-    }
+        if (isEmergency) {
+            
+            for (const doctor of doctors) {
+                if (doctor.availability.length > 0) { 
+                  availableDoctors.push(doctor);
 
-    cancel() {
-        this.name = null;
-        this.checkInDate = null;
-    }
-
-    toString() {
-        return `Room ${this.roomNumber}: ${this.name ? 'Reserved by ' + this.name : 'Available'}`;
-    }
-}
-
-class Hotel {
-    constructor() {
-        this.rooms = {};
-    }
-
-    addRoom(roomNumber) {
-        if (!this.rooms[roomNumber]) {
-            this.rooms[roomNumber] = new Room(roomNumber);
-            console.log(`Room ${roomNumber} added.`);
-        } else {
-            console.log(`Room ${roomNumber} already exists.`);
-        }
-    }
-
-    reserveRoom(roomNumber, name, checkInDate) {
-        if (this.rooms[roomNumber]) {
-            if (this.rooms[roomNumber].reserve(name, checkInDate)) {
-                console.log(`Room ${roomNumber} reserved for ${name} on ${checkInDate}.`);
-            } else {
-                console.log(`Room ${roomNumber} is already reserved.`);
+                }
             }
         } else {
-            console.log(`Room ${roomNumber} does not exist.`);
+            
+            for (const doctor of doctors) {
+                if (checkAvailability(doctor.availability, requestedDate)) {
+                   availableDoctors.push(doctor);
+                }
+            }
         }
+        return availableDoctors;
     }
+        const doctors = [
+        { name: "Dr. Fana",  specialty: "Cardiology", availability: ["05/27/2025", "05/28/2025"] },
+        { name: "Dr. Daniel", specialty: "Neurology", availability: ["05/29/2025", "05/30/2025"] },
+    ];
 
-    cancelReservation(roomNumber) {
-        if (this.rooms[roomNumber]) {
-            this.rooms[roomNumber].cancel();
-            console.log(`Reservation for Room ${roomNumber} has been canceled.`);
-        } else {
-            console.log(`Room ${roomNumber} does not exist.`);
-        }
-    }
+    const patient1 = { name: "Hellen", requestedDate: "05/27/2025", isEmergency: false };
+    const patient2 = { name: "Jennifer", requestedDate: "05/27/2025", isEmergency: true };
 
-    displayRooms() {
-        for (const room of Object.values(this.rooms)) {
-            console.log(room.toString());
-        }
-    }
-}
+    const matchingDoctorsForPatient1 = findMatchingDoctors(doctors, patient1.requestedDate, patient1.isEmergency);
+    const matchingDoctorsForPatient2 = findMatchingDoctors(doctors, patient2.requestedDate, patient2.isEmergency);
 
-// Example Usage
-const hotel = new Hotel();
-
-// Adding rooms
-hotel.addRoom(101);
-hotel.addRoom(102);
-hotel.addRoom(103);
-
-// Displaying rooms
-hotel.displayRooms();
-
-// Reserving rooms
-hotel.reserveRoom(101, "John Doe", "2023-10-01");
-hotel.reserveRoom(102, "Jane Smith", "2023-10-02");
-
-// Trying to reserve an already reserved room
-hotel.reserveRoom(101, "Alice Johnson", "2023-10-03");
-
-// Displaying rooms after reservations
-hotel.displayRooms();
-
-// Canceling a reservation
-hotel.cancelReservation(101);
-
-// Displaying rooms after cancellation
-hotel.displayRooms();
-
-
-
-
+    console.log(matchingDoctorsForPatient1); 
+    console.log(matchingDoctorsForPatient2); 
